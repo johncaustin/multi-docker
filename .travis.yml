@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t johncaustin/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t icerig/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true johncaustin/react-test npm test
+  - docker run -e CI=true icerig/react-test npm test
 
 after_success:
-  - docker build -t johncaustin/multi-client ./client
-  - docker build -t johncaustin/multi-nginx ./nginx
-  - docker build -t johncaustin/multi-server ./server
-  - docker build -t johncaustin/multi-worker ./worker
+  - docker build -t icerig/multi-client ./client
+  - docker build -t icerig/multi-nginx ./nginx
+  - docker build -t icerig/multi-server ./server
+  - docker build -t icerig/multi-worker ./worker
   # Log in to Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push images to Docker hub
-  - docker push johncaustin/multi-client
-  - docker push johncaustin/multi-nginx
-  - docker push johncaustin/multi-server
-  - docker push johncaustin/multi-worker
+  - docker push icerig/multi-client
+  - docker push icerig/multi-nginx
+  - docker push icerig/multi-server
+  - docker push icerig/multi-worker
