@@ -25,7 +25,7 @@
         {
             "name": "nginx",
             "image": "icerig/multi-nginx",
-            "hostname": "icerig/multi-nginx",
+            "hostname": "nginx",
             "essential": true,
             "memory": 128,
             "portMappings": [
